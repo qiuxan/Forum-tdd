@@ -15,6 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
 Route::get('/sms', 'SmsController@index')->name('welcome');
 
 Route::post('/sms', 'SmsController@store')->name('smsStore');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/threads', 'ThreadsController@index')->name('thread-index');
+Route::get('/threads/{thread}', 'ThreadsController@show')->name('thread-show');

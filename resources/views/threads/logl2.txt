@@ -1,0 +1,53 @@
+In command line:
+
+php artisan make:test ThreadTest
+
+
+In ThreadTest.php
+
+/** @test */ //THIS IS IMPORTANT IT IS TO TRIGGER THE TESTING
+public function a_user_can_browser_threads()
+{
+    $response = $this->get('/threads');
+    $response->assertStatus(200);
+}
+
+
+In command line:
+
+phpunit
+
+//to run the testing comment
+
+
+Result:
+
+There was 1 failure:
+
+1) Tests\Feature\ThreadTest::a_user_can_browser_threads
+Expected status code 200 but received 404.
+Failed asserting that false is true.
+
+/home/vagrant/code/laraapp/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:151
+/home/vagrant/code/laraapp/tests/Feature/ThreadTest.php:23
+
+Back to the test:
+
+   $response = $this->get('/threads’);// using get method to connect to /threads
+    $response->assertStatus(200);// expect to have the status 200(OK Standard) but see 404 NOT FOUND
+
+
+
+
+In this point we have to make sure we setup  the route ‘/threads’  and controller very clear
+
+
+Also you can test weather the view has thing like title  or not
+
+public function a_user_can_browser_threads()
+{
+    $thread=factory('App\Thread')->create();
+    $response = $this->get('/threads');
+    $response->assertStatus(200);
+    $response->assertSee($thread->title);
+}
