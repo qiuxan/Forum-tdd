@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/sms', 'SmsController@index')->name('welcome');
+Route::get('/sms', 'SmsController@index')->name('smsPage');
 
 Route::post('/sms', 'SmsController@store')->name('smsStore');
 
