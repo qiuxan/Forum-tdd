@@ -44,8 +44,11 @@ function sendMessage($number,$content){
 
     catch (ClientException $e) {
 //            echo $e->getErrorMessage() . PHP_EOL;
+//            session()->flash('success','Wrong');
     } catch (ServerException $e) {
         echo $e->getErrorMessage() . PHP_EOL;
+        session()->flash('error','SMS sending system problem, Please contact web master with error code : AKP404');
+
     }
 
 

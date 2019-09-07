@@ -32,6 +32,14 @@
                                 {{session()->get('success')}}
                             </div>
                         @endif
+
+
+                        @if(session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{session()->get('error')}}
+                            </div>
+                        @endif
+
                         <form action="{{route('smsStore')}}" method="POST">
 
                             {{csrf_field()}}
@@ -40,7 +48,7 @@
 
                             <div class="form-group">
                                 <label for="number">Number</label>
-                                <input name="number"  class="form-control" id="name" value="">
+                                <input name="number"  class="form-control" id="name" value="{{old('number')}}">
                             </div>
 
                             <div class="form-group">
